@@ -1,0 +1,159 @@
+#!/bin/bash
+
+echo "21" > /bin/versao
+echo "21" > /home/versao
+echo "21" > /home/sshplus
+echo "by: @crazy_vpn" > /usr/lib/licence
+echo 'by: @crazy_vpn' > /usr/lib/sshplus
+echo "0" > /etc/SSHPlus/Exp
+
+rm -rf /etc/SSHPlus/bot /etc/SSHPlus/ShellBot.sh /etc/SSHPlus/cabecalho /etc/SSHPlus/proxy.py > /dev/null 2>&1
+
+link="https://smile-vpn.net/scrip/Premium"
+
+echo "America/Sao_Paulo" > /etc/timezone
+ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime > /dev/null 2>&1
+dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1
+[[ ! -d /etc/SSHPlus ]] && mkdir /etc/SSHPlus
+[[ ! -d /etc/SSHPlus/senha ]] && mkdir /etc/SSHPlus/senha
+[[ ! -e /etc/SSHPlus/Exp ]] && touch /etc/SSHPlus/Exp
+[[ ! -d /etc/SSHPlus/userteste ]] && mkdir /etc/SSHPlus/userteste
+if ps x | grep "bot_plus"|grep -v grep 1>/dev/null 2>/dev/null; then
+	pidbot_plus=$(ps x|grep "bot_plus"|awk -F "pts" {'print $1'})
+    kill -9 $pidbot_plus > /dev/null 2>&1
+    screen -wipe > /dev/null 2>&1
+fi
+wget -O /etc/ssh/sshd_config $link/Install/sshd_config > /dev/null 2>&1
+service ssh restart
+wget $link/Modulos/addhost.sh -O /bin/addhost > /dev/null 2>&1
+chmod +x /bin/addhost
+wget $link/Modulos/verifatt.sh -O /bin/verifatt > /dev/null 2>&1
+chmod +x /bin/verifatt
+wget $link/Modulos/verifbot.sh -O /bin/verifbot > /dev/null 2>&1
+chmod +x /bin/verifbot
+wget $link/Modulos/alterarsenha.sh -O /bin/alterarsenha > /dev/null 2>&1
+chmod +x /bin/alterarsenha
+wget $link/Modulos/criarusuario.sh -O /bin/criarusuario > /dev/null 2>&1
+chmod +x /bin/criarusuario
+wget $link/Modulos/delhost.sh -O /bin/delhost > /dev/null 2>&1
+chmod +x /bin/delhost
+wget $link/Modulos/expcleaner.sh -O /bin/expcleaner > /dev/null 2>&1
+chmod +x /bin/expcleaner
+wget $link/Modulos/mudardata.sh -O /bin/mudardata > /dev/null 2>&1
+chmod +x /bin/mudardata
+wget $link/Modulos/criarteste.sh -O /bin/criarteste > /dev/null 2>&1
+chmod +x /bin/criarteste
+wget $link/Modulos/remover.sh -O /bin/remover > /dev/null 2>&1
+chmod +x /bin/remover
+wget $link/Modulos/alterarlimite.sh -O /bin/alterarlimite > /dev/null 2>&1
+chmod +x /bin/alterarlimite
+wget $link/Modulos/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
+chmod +x /bin/ajuda
+wget $link/Modulos/sshmonitor.sh -O /bin/sshmonitor > /dev/null 2>&1
+chmod +x /bin/sshmonitor
+wget $link/Modulos/badvpn.sh -O /bin/badvpn > /dev/null 2>&1
+chmod +x /bin/badvpn
+wget $link/Modulos/userbackup.sh -O /bin/userbackup > /dev/null 2>&1
+chmod +x /bin/userbackup
+wget $link/Modulos/blockt.sh -O /bin/blockt > /dev/null 2>&1
+chmod +x /bin/blockt
+wget $link/Modulos/otimizar.sh -O /bin/otimizar > /dev/null 2>&1
+chmod +x /bin/otimizar
+wget $link/Modulos/menu.sh -O /bin/menu > /dev/null 2>&1
+chmod +x /bin/menu
+wget $link/Modulos/speedtest.sh -O /bin/speedtest > /dev/null 2>&1
+chmod +x /bin/speedtest
+wget $link/Modulos/banner.sh -O /bin/banner > /dev/null 2>&1
+chmod +x /bin/banner
+wget $link/Modulos/senharoot.sh -O /bin/senharoot > /dev/null 2>&1
+chmod +x /bin/senharoot
+wget $link/Modulos/reiniciarservicos.sh -O /bin/reiniciarservicos > /dev/null 2>&1
+chmod +x /bin/reiniciarservicos
+wget $link/Modulos/reiniciarsistema.sh -O /bin/reiniciarsistema > /dev/null 2>&1
+chmod +x /bin/reiniciarsistema
+wget $link/Modulos/attscript.sh -O /bin/attscript > /dev/null 2>&1
+chmod +x /bin/attscript
+wget $link/Modulos/conexao.sh -O /bin/conexao > /dev/null 2>&1
+chmod +x /bin/conexao
+wget $link/Modulos/detalhes.sh -O /bin/detalhes > /dev/null 2>&1
+chmod +x /bin/detalhes
+wget $link/Modulos/delscript.sh -O /bin/delscript > /dev/null 2>&1
+chmod +x /bin/delscript
+wget $link/Modulos/botssh.sh -O /bin/botssh > /dev/null 2>&1
+chmod +x /bin/botssh
+wget $link/Modulos/infousers.sh -O /bin/infousers > /dev/null 2>&1
+chmod +x /bin/infousers
+wget $link/Modulos/limiter.sh -O /bin/limiter > /dev/null 2>&1
+chmod +x /bin/limiter
+wget $link/Modulos/uexpired.sh -O /bin/uexpired > /dev/null 2>&1
+chmod +x /bin/uexpired
+wget $link/Modulos/cabecalho.sh -O /etc/SSHPlus/cabecalho > /dev/null 2>&1
+chmod +x /etc/SSHPlus/cabecalho
+wget $link/Modulos/bot.sh -O /etc/SSHPlus/bot > /dev/null 2>&1
+chmod +x /etc/SSHPlus/bot
+wget $link/Modulos/proxy.py -O /etc/SSHPlus/proxy.py > /dev/null 2>&1
+chmod +x /etc/SSHPlus/proxy.py
+wget $link/Modulos/droplimiter.sh -O /bin/droplimiter.sh > /dev/null 2>&1
+chmod +x /bin/droplimiter.sh
+wget $link/Modulos/disconnect.sh -O /bin/disconnect > /dev/null 2>&1
+chmod +x /bin/disconnect
+wget $link/Modulos/updns.sh -O /bin/updns > /dev/null 2>&1
+chmod +x /bin/updns
+wget $link/Modulos/dns.sh -O /bin/dns > /dev/null 2>&1
+chmod +x /bin/dns
+
+[[ ! -d /etc/bot ]] && mkdir /etc/bot
+[[ ! -d /etc/bot/info-users ]] && mkdir /etc/bot/info-users
+[[ ! -d /etc/bot/arquivos ]] && mkdir /etc/bot/arquivos
+[[ ! -d /etc/bot/revenda ]] && mkdir /etc/bot/revenda
+[[ ! -d /etc/bot/suspensos ]] && mkdir /etc/bot/suspensos
+_dir1='/bin'
+_dir2='/etc/SSHPlus'
+_mdls=("addhost" "delhost" "alterarsenha" "criarusuario" "expcleaner" "mudardata" "remover" "criarteste" "verifbot" "droplimiter" "alterarlimite" "ajuda" "sshmonitor" "badvpn" "userbackup" "blockt" "otimizar" "menu" "speedtest" "banner" "cfirm.py" "senharoot" "reiniciarservicos" "reiniciarsistema" "attscript" "conexao" "delscript" "detalhes" "botssh" "infousers" "verifatt" "limiter" "uexpired" "cabecalho" "bot" "proxy.py")
+
+_arq_host="/etc/hosts"
+_host[0]="d1n212ccp6ldpw.cloudfront.net"
+_host[1]="dns.whatsapp.net"
+_host[2]="portalrecarga.vivo.com.br/recarga"
+_host[3]="navegue.vivo.com.br/controle/"
+_host[4]="navegue.vivo.com.br/pre/"
+_host[5]="www.whatsapp.net"
+_host[6]="SMILEVPN"
+_host[7]="social.lc.smile-vpn.net"
+for host in ${_host[@]}; do
+	if [[ "$(grep -w "$host" $_arq_host | wc -l)" = "0" ]]; then
+		sed -i "3i\127.0.0.1 $host" $_arq_host
+	fi
+done
+
+service ssh restart
+[[ ! -e /etc/autostart ]] && {
+echo '#!/bin/bash
+clear
+#INICIO AUTOMATICO' > /etc/autostart
+chmod +x /etc/autostart
+}
+
+[[ ! -e /etc/updatedns ]] && {
+echo '#!/bin/bash
+clear
+#INICIO AUTOMATICO' > /etc/update_dns
+chmod +x /etc/update_dns
+}
+
+#INICIO
+[[ $(crontab -l|grep -c "uexpired") = '0' ]] && (crontab -l 2>/dev/null; echo "0 */6 * * * /bin/uexpired") | crontab -
+[[ $(crontab -l|grep -c "verifatt") = '0' ]] && (crontab -l 2>/dev/null; echo "@daily /bin/verifatt") | crontab -
+[[ $(crontab -l|grep -c "autostart") = '0' ]] && (crontab -l 2>/dev/null; echo "@reboot /etc/autostart") | crontab -
+[[ $(crontab -l|grep -c "update_dns") = '0' ]] && (crontab -l 2>/dev/null; echo "*/1 * * * * /etc/update_dns") | crontab -
+
+wget -qO- $link/Install/versao |sed -n '1 p' |cut -d' ' -f2 > /bin/versao && cat /bin/versao > /home/sshplus
+service ssh restart > /dev/null 2>&1
+[[ $(ps x | grep "bot_plus"|grep -v grep | wc -l) != '0' ]] && {
+[[ ! -e "/etc/SSHPlus/ShellBot.sh" ]] && wget -qO- https://raw.githubusercontent.com/shellscriptx/shellbot/master/ShellBot.sh > /etc/SSHPlus/ShellBot.sh
+screen -r -S "bot_plus" -X quit
+screen -r -S "udpvpn" -X quit
+screen -wipe 1>/dev/null 2>/dev/null
+/etc/autostart
+}
+[[ -d /var/www/html/openvpn ]] && service apache2 restart > /dev/null 2>&1
