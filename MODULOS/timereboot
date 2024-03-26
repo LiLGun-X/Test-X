@@ -1,0 +1,148 @@
+#!/bin/bash
+
+if [[ $1 == "" ]]
+then
+[[ -e /etc/cron.d/reboot ]] && ar=$(echo -e "\033[1;32m◉ ") || ar=$(echo -e "\033[1;31m○ ")
+tx=$(cat /etc/cron.d/v2)
+clear
+cr
+echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣     สถานะAuto Reboot $ar Test $tx   "
+echo " ┈╰━┳━━━━━┳━━━━━━━━━━━━━━╯ "
+echo " ┈╭━┻━━━━━┻━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰🕰 ตั้งเวลา Restart vps 🕰🕰 "
+echo " ┈╰━┳━━━━━┳━━━━━━━━━━━━━━╯ "
+echo " ┈╭━┻━━━━━┻━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰 1. ทุกวัน เวลา ตีหนึ่ง "
+echo " ┈┣━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 2. ทุกๆ 07 วัน. "
+echo " ┈┣━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 3. ทุกๆ 01 เดือน. "
+echo " ┈┣━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 4. กำหมดค่าเอง "
+echo " ┈┣━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 5. ปิดใช้งานรีบูตอัตโนมัตร "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯"
+echo " "
+read -p " ┈┣  พิมพ์เลือก : " opcao
+else
+opcao=$1
+fi
+case $opcao in
+
+ x | x )
+clear
+   echo -e "\E[44;1;37m             AUTO REBOOT              \E[0m"
+                                echo -e "\033[1;31mESSA FUNÇÃO ATIVA REINICIALIZAÇÃO AUTOMÁTICA DA TUA VPS \033[1;33m \033[1;32\033[0m"
+   echo -e "\033[1;31M ESCOLHA UM HORÁRIO PARA O DESLIGAMENTO EX: \033[1;33m00:00 \033[1;32\033[0m"
+echo -ne "\033[1;32mDIGITE A HORA \033[1;33m\033[1;37m: "
+            read escolha
+                echo ""
+                echo -e "\033[1;31m HORÁRIO VÁLIDO!"
+                sleep 4
+                clear
+echo " $escolha " > /etc/cron.d/v2
+   shutdown -r +$escolha
+   echo -e ""
+   echo -e "\033[1;33mAUTO REBOOT AS $escolha ATIVADO COM SUCESSO \033[0m"
+   echo -e ""
+   echo -e "\033[1;34m[\033[1;37m01 •\033[1;34m]\033[1;37m > \033[1;33mDESATIVAR REBOOT \033[1;37m\033[0;32m"
+   echo -e ""
+   echo -ne "\n\033[1;33mENTER \033[1;33mPARA VOLTAR AO \033[1;33mMENU!\033[0m"; read
+   ;;
+   xr)
+   clear
+   echo -e "\E[44;1;37m             AUTO REBOOT              \E[0m"
+   echo -e "\033[1;31mESSA FUNÇÃO DESATIVA A REINICIALIZAÇÃO AUTOMÁTICA DA TUA VPS \033[1;33m \033[1;32\033[0m"
+   echo -e "\033[1;31mO HORÁRIO PRÉ DEFINIDO $escolha SERÁ DESATIVADO \033[1;33m \033[1;32\033[0m"
+   shutdown -c
+echo -e "\033[1;33mAUTO REBOOT DESATIVADO COM SUCESSO \033[0m"
+echo -e ""
+   echo -ne "\n\033[1;33mENTER \033[1;33mPARA VOLTAR AO \033[1;33mMENU!\033[0m"; read
+   ;;
+
+  01 | 1 )
+  echo " 00 1 * * * root /sbin/reboot" > /etc/cron.d/reboot
+echo " 00 1 * * *" > /etc/cron.d/v2
+clear
+
+echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰 ตั้งเวลา Restart vps 🕰 "
+echo " ┈╰━━━━━━━┳━━━━━┳━━━━━━━━╯ "
+echo " ┈╭━━━━━━━┻━━━━━┻━━━━━━━━╮ "
+echo " ┈┣  🕰 ทุกวันเวลาตีหนึ่งเรียบร้อยแล้ว 🕰 "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯ "
+sleep 2.5s
+service cron restart
+fun_conexao
+;;
+  02 | 2 )
+  echo " 0 0 * * 0 root /sbin/reboot" > /etc/cron.d/reboot
+echo " 0 0 * * 0 " > /etc/cron.d/v2
+clear
+
+echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰 ตั้งเวลา Restart vps 🕰 "
+echo " ┈╰━━━━━━━┳━━━━━┳━━━━━━━━╯ "
+echo " ┈╭━━━━━━━┻━━━━━┻━━━━━━━━╮ "
+echo " ┈┣  🕰 ทุกๆ 7 วัน เรียบร้อยแล้ว 🕰 "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯ "
+sleep 2.5s
+service cron restart
+fun_conexao
+;;
+  03 | 3 )
+  echo " 0 0 1 * * root /sbin/reboot" > /etc/cron.d/reboot
+echo " 0 0 1 * * " > /etc/cron.d/v2
+clear
+
+echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰 ตั้งเวลา Restart vps 🕰 "
+echo " ┈╰━━━━━━━┳━━━━━┳━━━━━━━━╯ "
+echo " ┈╭━━━━━━━┻━━━━━┻━━━━━━━━╮ "
+echo " ┈┣  🕰 ทุก 1 เดือน เรียบร้อยแล้ว 🕰 "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯ "
+sleep 2.5s
+service cron restart;;
+  04 | 4 )
+clear
+  echo " "
+  echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰🕰 ตัวอย่างการตั้งค่า 🕰🕰 "
+echo " ┈╰━━━━━━━┳━━━━━┳━━━━━━━━╯ "
+echo " ┈╭━━━━━━━┻━━━━━┻━━━━━━━━╮ "
+echo " ┈┣  🕰 0 * * * *   คือ 1ชม "
+echo " ┈┣━━━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 0 */6 * * * คือ 6ชม "
+echo " ┈┣━━━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 30 3 * * *  คือ ทุกวัน เวลา ตีสามครึ่ง "
+echo " ┈┣━━━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 0 0 * * 0   คือ 7วัน "
+echo " ┈┣━━━━━━━━━━━━━━━━┫"
+echo " ┈┣  🕰 0 0 1 * *   คือ 1เดือน "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯"
+  
+read -p " Time ( 0 0 * * 0 ) : " Set
+echo "$Set root /sbin/reboot" > /etc/cron.d/reboot
+echo "$Set " > /etc/cron.d/v2
+echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰 ตั้งเวลา Restart vps 🕰 "
+echo " ┈╰━━━━━━━┳━━━━━┳━━━━━━━━╯ "
+echo " ┈╭━━━━━━━┻━━━━━┻━━━━━━━━╮ "
+echo " ┈┣  🕰 ตั้งเลงาตามกำหนด เรียบร้อยแล้ว 🕰 "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯ "
+sleep 2.5s
+service cron restart
+echo -e "";;
+ 05 | 5 )
+rm -f /etc/cron.d/reboot
+rm -f /etc/cron.d/v2
+shutdown -c
+clear
+echo " ┈╭━━━━━━━━━━━━━━━━━━━━━━╮ "
+echo " ┈┣  🕰 ปิด Restart vps เรียบร้อยแล้ว 🕰 "
+echo " ┈╰━━━━━━━━━━━━━━━━━━━━━━╯ "
+sleep 2.5s
+service cron restart
+echo -e " ";;
+esac
