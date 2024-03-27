@@ -309,4 +309,16 @@ inst_sqd() {
 	}
 	
 
-inst_sqd
+
+
+if [[ -d "/etc/squid/" ]]; then
+			fun_squid
+               else
+                        inst_sqd
+		fi	
+  
+if [[ -d "/etc/squid3/" ]]; then
+			fun_squid
+               else
+                        inst_sqd
+		fi	
