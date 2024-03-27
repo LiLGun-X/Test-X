@@ -35,7 +35,7 @@ for pton in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
     [[ "$porta" = "$pton" ]] && {
     	echo -e "\n\033[1;31mPORTA \033[1;33m$porta \033[1;31mEM USO PELO \033[1;37m$svcs\033[0m"
     	sleep 3
-    	fun_conexao
+    	conexao
     }
 done
 }
@@ -67,12 +67,12 @@ inst_sqd() {
 				echo -e "\n\033[1;32mSQUID REMOVIDO COM SUCESSO !\033[0m"
 				sleep 2
 				clear
-				fun_conexao
+				conexao
 			} || {
 				echo -e "\n\033[1;31mRetornando...\033[0m"
 				sleep 2
 				clear
-				fun_conexao
+				conexao
 			}
 		else
 			clear
@@ -96,7 +96,7 @@ inst_sqd() {
 			[[ -z "$portass" ]] && {
 				echo -e "\n\033[1;31mPorta invalida!"
 				sleep 3
-				fun_conexao
+				conexao
 			}
 			for porta in $(echo -e $portass); do
 				verif_ptrs $porta
@@ -184,7 +184,7 @@ inst_sqd() {
 			fun_bar 'sqd_conf'
 			echo -e "\n\033[1;32mSQUID INSTALADO COM SUCESSO!\033[0m"
 			sleep 2.5s
-			fun_conexao
+			conexao
 		fi
 	}
 	addpt_sqd() {
@@ -207,7 +207,7 @@ inst_sqd() {
 			echo -e "\n\033[1;31mPorta invalida!"
 			sleep 2
 			clear
-			fun_conexao
+			conexao
 		}
 		verif_ptrs $pt
 		echo -e "\n\033[1;32mADICIONANDO PORTA AO SQUID!"
@@ -243,7 +243,7 @@ inst_sqd() {
 			echo -e "\n\033[1;31mPorta invalida!"
 			sleep 2
 			clear
-			fun_conexao
+			conexao
 		}
 		if grep -E "$pt" $var_sqd >/dev/null 2>&1; then
 			echo -e "\n\033[1;32mREMOVENDO PORTA DO SQUID!"
@@ -298,12 +298,12 @@ inst_sqd() {
 		0 | 00)
 			echo -e "\033[1;31mRetornando...\033[0m"
 			sleep 1
-			fun_conexao
+			conexao
 			;;
 		*)
 			echo -e "\033[1;31mOpcao Invalida...\033[0m"
 			sleep 2
-			fun_conexao
+			conexao
 			;;
 		esac
 	}
