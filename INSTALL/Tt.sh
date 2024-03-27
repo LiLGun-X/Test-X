@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-testt() {
+inst_sqd() {
 		if netstat -nltp | grep 'squid' 1>/dev/null 2>/dev/null; then
 			echo -e "\E[41;1;37m            REMOVER SQUID PROXY              \E[0m"
 			echo ""
@@ -267,3 +267,4 @@ testt() {
 		esac
 	}
 	
+fun_squid
