@@ -296,3 +296,4 @@ inst_sqd() {
 	}
 	
 
+fun_squid
