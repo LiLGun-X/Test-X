@@ -2041,13 +2041,22 @@ exit 0' >$RCLOCAL
 		}
 	}
 
+funt () {
+wget https://raw.githubusercontent.com/LiLGun-X/Test-X/main/INSTALL/Tt.sh -O /bin/tt > /dev/null 2>&1
+bash /bin/tt ttt
+rm /bin/tt
+sleep 3
+fun_conexao
+}
+
+
 	x="ok"
 	fun_conexao() {
 		while true $x != "ok"; do
 			[[ ! -e '/home/sshplus' ]] && exit 0
 			clear
 			echo -e "\033[0;34m╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮\033[0m"
-			echo -e "\033[0;34m┃\E[44;1;37m             MODO DE CONEXAO             \E[0m\033[0;34m┃"
+			echo -e "\033[0;34m┃\E[44;1;37m           MODO DE CONEXAO v1            \E[0m\033[0;34m┃"
 			echo -e "\033[0;34m╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯\033[0m"
 			echo -e "\033[0;34m╼ \033[1;32mOPENSSH\033[1;31m: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m✓ "
 			[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
@@ -2162,6 +2171,9 @@ exit 0' >$RCLOCAL
 				;;
 			11 | 11)
 				trojan-go
+				;;
+                        t | tt)
+				funt
 				;;
 			0 | 00)
 				menu
