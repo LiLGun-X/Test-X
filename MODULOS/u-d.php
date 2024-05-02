@@ -1,22 +1,6 @@
 
 #!/usr/bin/env bash
 
-# Functions
-ok() {
-    echo -e '        \e[32m'$1'\e[m';
-}
-
-die() {
-    echo -e '        \e[1;35m'$1'\e[m';
-}
-
-des() {
-    echo -e '        \e[1;31m'$1'\e[m'; exit 1;
-}
-red() {
-    echo -e '        \e[1;31m'$1'\e[m';
-}
-
 versionchek(){
 source /etc/os-release
 }
@@ -38,7 +22,7 @@ echo -e "\e[34m    ┣━━━━━━━━━━━━━━━━━━━�
 echo -e "\e[35m    ╰━━━━━━━━━━━━━┫ Setup OpenVPN $ID $VERSION_ID         \e[m"
 }
 update(){
-die "┣ ❯❯❯ apt-get update"
+echo "┣ ❯❯❯ apt-get update"
 apt-get update -q > /dev/null 2>&1
 }
 
@@ -56,14 +40,14 @@ smile="https://smile-vpn.net/scrip/Premiums"
 
 dpkg -l openvpn > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
-    die " ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
-    die " ┣ ❯❯❯ ได้ติดตั้ง openvpn ใว้แล้วก่อนหน้านี้       "
-    die " ┣ ❯❯❯ ต้องการถอนติดตั้งรันใหม่หรือไม่       "
-    die " ┣ ❯❯❯ ไม่รับประกันว่าจะผ่าน 100%        "
-    die " ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯               "
+    echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
+    echo "┣ ❯❯❯ ได้ติดตั้ง openvpn ใว้แล้วก่อนหน้านี้       "
+    echo "┣ ❯❯❯ ต้องการถอนติดตั้งรันใหม่หรือไม่       "
+    echo "┣ ❯❯❯ ไม่รับประกันว่าจะผ่าน 100%        "
+    echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯               "
     read -p "         ┣━ Y/n : " FF
     if [[ "$FF" = "y" || "$FF" = "Y" ]]; then
- die " ╰ ❯❯❯ กำลังถอนติดตั้ง Openvpn        "
+ echo "╰ ❯❯❯ กำลังถอนติดตั้ง Openvpn        "
  apt-get -y --purge remove openvpn* > /dev/null 2>&1
  rm -r -f /etc/openvpn
  mkdir -p /etc/openvpn
@@ -91,17 +75,17 @@ SERVER_IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
 if [[ "$SERVER_IP" = "" ]]; then
 SERVER_IP = 127.0.0.1
 fi
-die "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
+echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
 read -p "            IP Server  : " -e -i $SERVER_IP SERVER_IP
-die "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
+echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
 echo "$SERVER_IP" > /usr/bin/ipsm
 read -p "            Port OpenVPN  : " -e -i 443 port
-die "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
+echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
 read -p "            Limit OpenVPN  : " -e -i 5000 limit
-die "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯                   "
+echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯                   "
 # Install openvpn
 
-die "┣ ❯❯❯ apt-get install openvpn    "
+echo "┣ ❯❯❯ apt-get install openvpn    "
 cd /
 wget -q -O ovpn.tar "$smile/Install/conf/open-u18.04.tar"
 tar xf ovpn.tar
@@ -118,7 +102,7 @@ max-clients $limit
 apt-get install -qy openvpn > /dev/null 2>&1
 
 # Restart Service
-ok "┣ ❯❯❯ service openvpn restart"
+echo "┣ ❯❯❯ service openvpn restart"
 service openvpn restart > /dev/null 2>&1
 }
 
@@ -126,7 +110,7 @@ service openvpn restart > /dev/null 2>&1
 nginx_sm(){
 #install Nginx
 if [ ! -e /etc/nginx ]; then
-die "┣ ❯❯❯ apt-get install nginx"
+echo "┣ ❯❯❯ apt-get install nginx"
 mkdir -p /home/vps/public_html
 apt-get install -qy nginx > /dev/null 2>&1
 rm -f /etc/nginx/sites-enabled/default
@@ -136,7 +120,7 @@ wget -q -O /etc/nginx/conf.d/vps.conf "$smile/Install/conf/vps.conf"
 sed -i "s/80/85/g" /etc/nginx/conf.d/vps.conf
 wget -q -O /home/vps/public_html/index.php "$smile/check_online/on.txt"
 chmod -R 777 /etc/openvpn/*.log
-ok "┣ ❯❯❯ service nginx restart"
+echo "┣ ❯❯❯ service nginx restart"
 service nginx restart > /dev/null 2>&1
 fi
 }
@@ -144,11 +128,11 @@ fi
 php_sm(){
 if [[ ! -e /etc/php ]]; then
 #install php-fpm
-die "┣ ❯❯❯ apt-get install php"
+echo "┣ ❯❯❯ apt-get install php"
 apt-get install -qy php-fpm > /dev/null 2>&1
 apt-get install -qy php-curl > /dev/null 2>&1
 sed -i "s/listen = \/run\/php\/php$(ls \/etc\/php)-fpm.sock/listen = 127.0.0.1:9000/g" /etc/php/$(ls \/etc\/php)/fpm/pool.d/www.conf
-ok "┣ ❯❯❯ service php restart"
+echo "┣ ❯❯❯ service php restart"
 service php$(ls /etc/php)-fpm restart > /dev/null 2>&1
 fi
 }
@@ -166,7 +150,7 @@ email=sakariyamisayalong@gmail.com
 
 
 # install stunnel
-die "┣ ❯❯❯ apt-get install ssl"
+echo "┣ ❯❯❯ apt-get install ssl"
 apt-get install -qy stunnel4 > /dev/null 2>&1
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/stunnel/stunnel.pem
@@ -187,7 +171,7 @@ cat /etc/openvpn/client-key.pem /etc/openvpn/client-cert.pem > /etc/stunnel/stun
 
 #konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-ok "┣ ❯❯❯ service ssl restart"
+echo "┣ ❯❯❯ service ssl restart"
 service stunnel4 restart > /dev/null 2>&1
 #fi
 }
@@ -197,7 +181,7 @@ vnstat_sm(){
 #install vnstat
 if [ ! -e /home/vps/public_html/api ]; then
 
-die "┣ ❯❯❯ apt-get install vnstat"
+echo "┣ ❯❯❯ apt-get install vnstat"
 apt-get install -qy vnstat > /dev/null 2>&1
 chown -R vnstat:vnstat /var/lib/vnstat
 
@@ -205,7 +189,7 @@ chown -R vnstat:vnstat /var/lib/vnstat
 apt-get -y --purge remove vnstat* > /dev/null 2>&1
 apt-get install -qy vnstat > /dev/null 2>&1
 
-ok "┣ ❯❯❯ service vnstat restart"
+echo "┣ ❯❯❯ service vnstat restart"
 service vnstat restart > /dev/null 2>&1
 
 if [ -e '/var/lib/vnstat/eth0' ]; then
@@ -235,7 +219,7 @@ fi
 Iptables_sm(){
 # Iptables
 if [ ! -e /usr/bin/iptaables_ok ]; then
-die "┣ ❯❯❯ apt-get install iptables"
+echo "┣ ❯❯❯ apt-get install iptables"
 apt-get install -qy iptables > /dev/null 2>&1
 apt-get install -qy iptables-persistent
 #if [ -e '/var/lib/vnstat/eth0' ]; then
@@ -274,7 +258,7 @@ service ssh restart > /dev/null 2>&1
 
 menu_sm(){
 if [ ! -e /usr/bin/bwh ]; then
-ok "┣ ❯❯❯ Install Menu " 
+echo "┣ ❯❯❯ Install Menu " 
 cd
 wget -q -O menu "$smile/menu/menu.php"
 chmod +x menu
@@ -311,10 +295,10 @@ service cron restart
 }
 
 failban(){
-ok "┣ ❯❯❯ Install Fail2ban " 
+echo "┣ ❯❯❯ Install Fail2ban " 
 apt-get install -qy fail2ban > /dev/null 2>&1
 wget -q -O /etc/fail2ban/jail.local "$smile/fail2ban/jail.txt"
-ok "┣ ❯❯❯ service fail2ban restart"
+echo "┣ ❯❯❯ service fail2ban restart"
 systemctl restart fail2ban.service > /dev/null 2>&1
 }
 
@@ -324,7 +308,7 @@ wget -q -O /etc/ssh/sshrc "$smile/fail2ban/login_nofy.txt"
 
 
 socks_ws(){
-ok "┣ ❯❯❯ Install Socks Proxy " 
+echo "┣ ❯❯❯ Install Socks Proxy " 
 wget -q -O /etc/SSHPlus/wsproxy.py "$smile/Modulos/wsproxy.py"
 for pidproxy in $(screen -ls | grep ".ws" | awk {'print $1'}); do
 screen -r -S "$pidproxy" -X quit
@@ -359,8 +343,8 @@ setting_time
 menu_sm
 drop_caches
 update
-die "┣ ❯❯❯ Successfully installed "
-die "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯               "
+echo "┣ ❯❯❯ Successfully installed "
+echo "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯               "
 echo 
 read -p "  Enter On Menu " menu
 }
