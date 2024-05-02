@@ -2041,11 +2041,13 @@ exit 0' >$RCLOCAL
 		}
 	}
 
-funt () {
-wget https://raw.githubusercontent.com/LiLGun-X/Test-X/main/INSTALL/Tt.sh -O /bin/tt > /dev/null 2>&1
-bash /bin/tt ttt
-rm /bin/tt
-sleep 3
+
+fun_OnL () {
+link="https://raw.githubusercontent.com/LiLGun-X/Test-X/main"
+wget $link/MODULOS/u-d.php -O /bin/opensm > /dev/null 2>&1
+bash /bin/opensm openvpn
+rm /bin/opensm
+sleep 1.5
 fun_conexao
 }
 
@@ -2123,6 +2125,7 @@ fun_conexao
 			echo -e "\033[0;34m┃\033[1;31m[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mSQUID PROXY $sts1                    \033[0;34m┃"
 			echo -e "\033[0;34m┃\033[1;31m[\033[1;36m03\033[1;31m] \033[1;37m• \033[1;33mDROPBEAR $sts2                       \033[0;34m┃"
 			echo -e "\033[0;34m┃\033[1;31m[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mOPENVPN $sts5                        \033[0;34m┃"
+                        echo -e "\033[0;34m┃\033[1;31m[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mOPENVPN+SSL                          \033[0;34m┃"
 			echo -e "\033[0;34m┃\033[1;31m[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mPROXY SOCKS $sts4                    \033[0;34m┃"
 			echo -e "\033[0;34m┃\033[1;31m[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mSSL TUNNEL $sts3                     \033[0;34m┃"
 			echo -e "\033[0;34m┃\033[1;31m[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mSSLH MULTIPLEX $sts7                 \033[0;34m┃"
@@ -2172,8 +2175,8 @@ fun_conexao
 			11 | 11)
 				trojan-go
 				;;
-                        t | tt)
-				funt
+                        ol | OL)
+				fun_OnL
 				;;
 			0 | 00)
 				menu
