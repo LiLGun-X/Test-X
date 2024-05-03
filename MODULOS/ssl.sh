@@ -112,9 +112,7 @@ echo "╰━━━━━━━━━━━━━━━━━━━━━━━�
 echo 
 read -p "  Enter On Menu " menu
 }
-
-if [[ $1 == "openvpn" ]]; then
 install
-fi
+
 
 
