@@ -1,10 +1,7 @@
-
-#!/usr/bin/env bash
-
+#!/bin/bash
 versionchek(){
 source /etc/os-release
 }
-
 cr(){
 clear
 system=$(cat /etc/issue.net)
