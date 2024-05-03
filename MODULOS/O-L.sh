@@ -1,7 +1,4 @@
 #!/bin/bash
-versionchek(){
-source /etc/os-release
-}
 cr(){
 clear
 system=$(cat /etc/issue.net)
@@ -16,7 +13,7 @@ echo "                                         𝙎𝘾𝙍𝙄𝙋𝙏"
 echo -e "\e[33m    ┣━━┫   Scrip Mod By Test-X7          "
     sleep 0.01
 echo -e "\e[34m    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫               "
-echo -e "\e[35m    ╰━━━━━━━━━━━━━┫ Setup OpenVPN $ID $VERSION_ID         \e[m"
+echo -e "\e[35m    ╰━━━━━━━━━━━━━┫ Setup OpenVPN         \e[m"
 }
 update(){
 echo "┣ ❯❯❯ apt-get update"
@@ -325,7 +322,6 @@ echo "* * * * * root /etc/autostart" > /etc/cron.d/proxy
 }
 
 install(){
-versionchek
 cr
 openvpn_sm
 nginx_sm
