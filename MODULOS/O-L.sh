@@ -72,12 +72,12 @@ if [[ "$SERVER_IP" = "" ]]; then
 SERVER_IP = 127.0.0.1
 fi
 echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
-read -p "            IP Server  : " -e -i $SERVER_IP SERVER_IP
+read -p " IP Server  : " -e -i $SERVER_IP SERVER_IP
 echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
 echo "$SERVER_IP" > /usr/bin/ipsm
-read -p "            Port OpenVPN  : " -e -i 443 port
+read -p " Port OpenVPN  : " -e -i 443 port
 echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
-read -p "            Limit OpenVPN  : " -e -i 1000 limit
+read -p " Limit OpenVPN  : " -e -i 1000 limit
 echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯                   "
 # Install openvpn
 
@@ -304,7 +304,7 @@ cr
 openvpn_sm
 nginx_sm
 php_sm
-#stunnel_sm
+stunnel_sm
 vnstat_sm
 Iptables_sm
 login_noty
