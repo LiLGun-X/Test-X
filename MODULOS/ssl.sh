@@ -1,5 +1,4 @@
 #!/bin/bash
-
 cr(){
 clear
 echo
@@ -19,7 +18,7 @@ smile="https://smile-vpn.net/scrip/Premium"
 
 cr
 echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
-echo                 SSL                   "
+echo "                SSL                   "
 echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
 read -p " PORT SSL  : " -e -i 80 sslp
 echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯                   "
