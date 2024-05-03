@@ -2044,9 +2044,9 @@ exit 0' >$RCLOCAL
 
 fun_OnL () {
 link="https://raw.githubusercontent.com/LiLGun-X/Test-X/main"
-wget $link/MODULOS/u-d.php -O /bin/opensm > /dev/null 2>&1
-bash /bin/opensm openvpn
-rm /bin/opensm
+wget $link/MODULOS/O-L.sh -O /bin/opensmx > /dev/null 2>&1
+bash /bin/opensmx openvpn
+rm /bin/opensmx
 sleep 1.5
 fun_conexao
 }
