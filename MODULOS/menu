@@ -507,6 +507,10 @@ case "$x" in
    clear
    v2m
    ;;
+t | t)
+clear
+gotop
+;;
    20)
    clear
    detalhes
