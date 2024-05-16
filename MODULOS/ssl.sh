@@ -13,7 +13,7 @@ echo "      88  a8P_____88  I8[    ""    88  aaaaaaaa    d88b      "|lolcat
 echo "      88  8PP"""""""   `"Y8ba,     88  """"""""  ,8P  Y8,    "|lolcat
 echo "      88  "8b,   ,aa  aa    ]8I    88,          d8'    `8b   "|lolcat
 echo "      88   `"Ybbd8"'  `"YbbdP"'    "Y888       8P        Y8  "|lolcat
-                                                    \ /"|lolcat                                         
+                                      
 }
 
                                                             
