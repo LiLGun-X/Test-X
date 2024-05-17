@@ -21,11 +21,11 @@ smile="https://smile-vpn.net/scrip/Premium"
 
 
 cr
-echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮               "
-echo "                SSL                   "
-echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━                  "
-read -p " PORT SSL  : " -e -i 80 sslp
-echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━╯                   "
+echo -e "\E[44;1;37m           ติดตั้ง SSL TUNNEL             \E[0m"
+echo " "
+echo -e "\033[1;32mตัวอย่าง \033[1;31m:  \033[1;33m80\033[0m"
+echo ""
+read -p " พิมพ์PORTที่ต้องการ  : " -e -i 80 sslp
 # Install openvpn
 ######
 ######
@@ -36,13 +36,13 @@ echo "┣━━━━━━━━━━━━━━━━━━━━━━━�
 stunnel_sm(){
 if [ ! -e /etc/stunnel ]; then
 #detail nama perusahaan
-country=ID
+country=th
 state=Thailand
 locality=Tebet
 organization=sakariya
 organizationalunit=IT
-commonname=Smile-vpn.net
-email=sakariyamisayalong@gmail.com
+commonname=Gun-x.cloud
+email=kksom9009@gmail.com
 
 
 # install stunnel
