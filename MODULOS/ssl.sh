@@ -5,19 +5,16 @@ echo
 system=$(cat /etc/issue.net)
 date=$(date '+%Y-%m-%d <> %H:%M:%S')
 echo -e "\033[1;37m $system                          $date"
-echo " 888888888888                                  8b        d8  "|lolcat
-echo "      88                           ,d           Y8,    ,8P   "|lolcat
-echo "      88                           88            `8b  d8'    "|lolcat
-echo "      88   ,adPPYba,  ,adPPYba,  MM88MMM           Y88P      "|lolcat
-echo "      88  a8P_____88  I8[    \+    88  aaaaaaaa    d88b      "|lolcat
-echo "      88  8PP°=°=°=°   `•Y8ba,     88  '-'-'--'  ,8P  Y8,    "|lolcat
-echo "      88  +8b,   ,aa  aa    ]8I    88,          d8'    `8b   "|lolcat
-echo "      88   ``Ybbd8`'  `^YbbdP√'    ×Y888       8P        Y8  "|lolcat
+echo "      .########.########..######..########.........##.....##"|lolcat
+echo "      ....##....##.......##....##....##.............##...##."|lolcat
+echo "      ....##....##.......##..........##..............##.##.."|lolcat
+echo "      ....##....######....######.....##....#######....###..."|lolcat
+echo "      ....##....##.............##....##..............##.##.."|lolcat
+echo "      ....##....##.......##....##....##.............##...##."|lolcat
+echo "      ....##....########..######.....##............##.....##"|lolcat
                                       
 }
 
-                                                            
-                                                            
                                                             
 smile="https://smile-vpn.net/scrip/Premium"
 
