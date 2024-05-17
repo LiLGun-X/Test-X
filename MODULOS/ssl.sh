@@ -20,7 +20,10 @@ smile="https://smile-vpn.net/scrip/Premium"
 
 
 
-cr
+
+system=$(cat /etc/issue.net)
+date=$(date '+%Y-%m-%d <> %H:%M:%S')
+echo -e "\033[1;37m $system                          $date"
 echo -e "\E[44;1;37m           ติดตั้ง SSL TUNNEL             \E[0m"
 echo " "
 echo -e "\033[1;32mตัวอย่าง \033[1;31m:  \033[1;33m80\033[0m"
