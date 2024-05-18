@@ -1,4 +1,4 @@
 smile="https://smile-vpn.net/scrip/Premium" 
 # download script 
-cd /usr/bin wget -q -O v2x "$smile/menu/menu.php"
- chmod +x v2x 
+cd /usr/bin wget -q -O v2x "https://raw.githubusercontent.com/LiLGun-X/Test-X/main/MODULOS/v2m"
+chmod +x v2x 
