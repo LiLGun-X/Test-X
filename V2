@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "/bin/menu" > /bin/h && chmod +x /bin/h > /dev/null 2>&1
+rm versao* > /dev/null 2>&1
+wget https://kguza.net/sshplus-vip/Install/versao > /dev/null 2>&1
+cd /bin/ > /dev/null 2>&1
+rm v2m > /dev/null 2>&1
+wget https://raw.githubusercontent.com/LiLGun-X/HYPER-X-SCRIPT/main/MODULOS/v2m > /dev/null 2>&1
+chmod 777 v2m > /dev/null 2>&1
+
+
+echo " พ่องมึงตาย"
