@@ -25,7 +25,7 @@ date=$(date '+%Y-%m-%d <> %H:%M:%S')
 echo -e "\033[1;37m $system                          $date"
 echo -e "\E[44;1;37m           ติดตั้ง V2M             \E[0m"
 echo " "
-
+sleep 1.5s
 
 menu_sm(){
 echo "┣ ❯❯❯ Install Menu " 
@@ -42,7 +42,7 @@ rm -f menu
 
 install(){
 cr
-
+sleep 2s
 menu_sm
 echo "┣ ❯❯❯ Successfully installed "
 echo "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯               "
