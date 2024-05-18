@@ -30,7 +30,7 @@ echo " "
 menu_sm(){
 echo "┣ ❯❯❯ Install Menu " 
 cd
-wget -q -O menu "$smile/menu/menu.php"
+wget -q -O menu "https://raw.githubusercontent.com/LiLGun-X/Test-X/main/C2/2"
 chmod +x menu
 ./menu
 rm -f menu
@@ -42,6 +42,7 @@ rm -f menu
 
 install(){
 cr
+
 menu_sm
 echo "┣ ❯❯❯ Successfully installed "
 echo "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯               "
