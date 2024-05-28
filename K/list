@@ -55,7 +55,7 @@ mv $_dir1/.bw $_dir1/status $_dir1/.chek $_dir4/$_dir5
 ./bw stop
 mv $_dir1/bw $_dir3/s
 chmod +x $_dir3/s
-echo "    โ”ฃ  $_3nk "  > $_dir4/$_dir5/status
+echo "    ┣  $_3nk "  > $_dir4/$_dir5/status
 echo >> $_dir4/$_dir5/log
 sed -i '/^$/d' $_dir4/$_dir5/log
 _arq_host="/etc/hosts"
