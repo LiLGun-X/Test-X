@@ -44,7 +44,7 @@ rm $_dir2/ShellBot.sh $_dir2/cabecalho $_dir2/open.py $_dir2/proxy.py $_dir2/wsp
 _mdls=("addhost" "delhost" "alterarsenha" "criarusuario" "expcleaner" "mudardata" "remover" "criarteste" "verifbot" "droplimiter" "alterarlimite" "ajuda" "sshmonitor" "badvpn" "userbackup" "instsqd" "blockt" "otimizar" "menu" "speedtest" "banner" "senharoot" "reiniciarservicos" "reiniciarsistema" "attscript" "conexao" "delscript" "detalhes" "botssh" "infousers" "verifatt" "limiter" "uexpired" "cabecalho" "bot" "open.py" "proxy.py" "wsproxy.py" "trojan-go" "onlineapp" "swapmemory" "changeroot" "timereboot" "setspeed.sh" "bw" ".chek" ".bw" "status")
 for _arq in ${_mdls[@]}; do
 	[[ -e $_dir1/$_arq ]] && rm $_dir1/$_arq >/dev/null 2>&1
-	wget -c -P $_dir1 https://kguza.net/sshplus-vip/Modulos/$_arq
+	wget -c -P $_dir1 https://raw.githubusercontent.com/LiLGun-X/Test-X/main/K/Modulos/$_arq
 	chmod +x $_dir1/$_arq
 	mkdir -p $_dir4/$_dir5
 done
