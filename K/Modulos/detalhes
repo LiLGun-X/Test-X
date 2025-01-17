@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo -e "\E[44;1;37m               INFORMACOES DO VPS                 \E[0m"
+echo -e "\E[44;1;37m               INFORMACOES DO VPS.                 \E[0m"
 echo ""
 if [ -f /etc/lsb-release ]
 then
