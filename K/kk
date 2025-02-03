@@ -20,3 +20,4 @@ for ((i=0; i<${#selected_password}; i++)); do
 done
 
 echo # เว้นบรรทัด
+#ตัวสร้างรหัสKguzaHackในtermux 
