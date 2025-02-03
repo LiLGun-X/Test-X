@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ดึงวันที่ปัจจุบันในรูปแบบ YYMMDD
+formatted_date=$(date '+%y%m%d')
+
+# แปลงเป็น MD5 แล้วตัดเอา 10 อักขระจากตำแหน่งที่ 10
+password=$(echo -n "$formatted_date" | md5sum | cut -d"-" -f1)
+selected_password=${password:10:10}
+
+# สีรุ้งสำหรับตัวอักษร
+colors=(31 33 32 36 34 35)
+
+# แสดงข้อความ "รหัสผ่าน:" 
+echo -ne "รหัสผ่าน: "
+
+# แสดงรหัสผ่านด้วยสีรุ้ง
+for ((i=0; i<${#selected_password}; i++)); do
+  color=${colors[i % ${#colors[@]}]}
+  echo -ne "\e[${color}m${selected_password:$i:1}\e[0m"
+done
+
+echo # เว้นบรรทัด
